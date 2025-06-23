@@ -1,0 +1,28 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "bd17e6f446fc257ddaebc95775e7c4d023896e359891585d2c1cfb35f984cd54",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/jobs/generate_list_for_xxx_job.rb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "system(\"mysql -h#{ENV[\"DB_HOST\"]} -u#{db_config[\"DB_USERNAME\"]} -p#{db_config[\"DB_PASSWORD\"]} -D#{db_config[\"DB_DATABASE\"]} -N -e\\\"#{SQL}\\\" | sed 's/\\t/,/g' > #{\"tmp/post_list_for_xxx.csv\"}\", :exception => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "GenerateListForXxxJob",
+        "method": "perform"
+      },
+      "user_input": "ENV[\"DB_HOST\"]",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.0.2"
+}
